@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zury Rodriguez — Class of 2026 Graduation Celebration</title>
+  <meta name="description" content="You're invited to celebrate Zury Rodriguez's graduation! Saturday, June 20, 2026 at the Armory Performing Arts Center, Brighton, CO. RSVP now!">
+  <meta property="og:title" content="Zury Rodriguez — Class of 2026 Graduation Celebration">
+  <meta property="og:description" content="Please join us to celebrate our graduate Zury Rodriguez! Saturday, June 20, 2026. Dinner 5-7p | Dance 7-11p. RSVP now!">
+  <meta property="og:image" content="ZurysInvitation.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      background: #1a0f0a;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* ── Page Wrapper ────────────────────────────────── */
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 16px;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(180, 60, 60, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(180, 140, 60, 0.10) 0%, transparent 60%),
+        #1a0f0a;
+    }
+
+    /* ── Invitation Container ────────────────────────── */
+    .invitation-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(180, 120, 60, 0.15),
+        inset 0 0 0 1px rgba(210, 170, 100, 0.2);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .invitation-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Clickable RSVP Overlay ──────────────────────── */
+    /*
+      This invisible link sits right on top of the "tally.so/r/PdXL5V" text
+      in the invitation image. Percentages are relative to the image size
+      so it stays aligned at any viewport width.
+    */
+    .rsvp-link {
+      position: absolute;
+      /* Positioned over the RSVP URL text in the image */
+      left: 28%;
+      top: 74.5%;
+      width: 44%;
+      height: 3.5%;
+      z-index: 10;
+      cursor: pointer;
+      /* Debug: uncomment to see the hit-area */
+      /* background: rgba(255, 0, 0, 0.25); */
+    }
+
+    .rsvp-link:focus-visible {
+      outline: 3px solid #c9a84c;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── Subtle pulse hint ───────────────────────────── */
+    .rsvp-link::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 6px;
+      border: 2px solid rgba(201, 168, 76, 0);
+      animation: pulseHint 3s ease-in-out 2s 3;
+      pointer-events: none;
+    }
+
+    @keyframes pulseHint {
+      0%, 100% { border-color: rgba(201, 168, 76, 0); transform: scale(1); }
+      50%      { border-color: rgba(201, 168, 76, 0.6); transform: scale(1.04); }
+    }
+
+    /* ── Tooltip on hover ────────────────────────────── */
+    .rsvp-link .tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: #2c1a10;
+      color: #e8d5b0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 14px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    .rsvp-link .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #2c1a10;
+    }
+
+    .rsvp-link:hover .tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── CTA Button beneath image ────────────────────── */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #c9a84c, #8b6914);
+      color: #1a0f0a;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      transition: all 0.35s ease;
+      box-shadow:
+        0 4px 16px rgba(201, 168, 76, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow:
+        0 8px 30px rgba(201, 168, 76, 0.45),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #d4b65a, #9c7a1c);
+    }
+
+    .cta-button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .cta-button svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ── Fade-in animation ───────────────────────────── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Decorative floating particles ────────────────── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.3);
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+    .footer {
+      margin-top: 32px;
+      color: rgba(232, 213, 176, 0.35);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    /* ── Responsive tweaks ───────────────────────────── */
+    @media (max-width: 480px) {
+      .page { padding: 8px; }
+
+      .invitation-wrapper {
+        border-radius: 8px;
+      }
+
+      .cta-button {
+        font-size: 15px;
+        padding: 14px 30px;
+      }
+
+      .rsvp-link .tooltip {
+        font-size: 12px;
+        padding: 6px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative background particles -->
+  <div class="particles" aria-hidden="true" id="particles"></div>
+
+  <main class="page">
+    <!-- Invitation image with clickable RSVP overlay -->
+    <div class="invitation-wrapper">
+      <img
+        src="ZurysInvitation.png"
+        alt="Graduation invitation for Zury Rodriguez, Class of 2026. Saturday, June 20, 2026. Dinner 5-7pm, Dance 7-11pm at Armory Performing Arts Center, 300 Strong St, Brighton, CO 80601. Dress code: Mexican Western."
+        id="invitation-image"
+      >
+
+      <!-- Invisible clickable area over the RSVP URL -->
+      <a
+        href="https://tally.so/r/PdXL5V"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rsvp-link"
+        id="rsvp-overlay-link"
+        aria-label="RSVP at tally.so/r/PdXL5V"
+      >
+        <span class="tooltip">Click to RSVP ✨</span>
+      </a>
+    </div>
+
+    <!-- Explicit CTA button below the image -->
+    <a
+      href="https://tally.so/r/PdXL5V"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta-button"
+      id="rsvp-button"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      RSVP Now
+    </a>
+
+    <p class="footer">Class of 2026</p>
+  </main>
+
+  <script>
+    // Generate subtle floating particles
+    (function () {
+      const container = document.getElementById('particles');
+      const count = 18;
+
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.left = Math.random() * 100 + '%';
+        p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+        p.style.animationDuration = (12 + Math.random() * 20) + 's';
+        p.style.animationDelay = (Math.random() * 15) + 's';
+        p.style.background = `rgba(${180 + Math.random() * 40}, ${140 + Math.random() * 40}, ${50 + Math.random() * 30}, ${0.15 + Math.random() * 0.2})`;
+        container.appendChild(p);
+      }
+    })();
+  </script>
+
+</body>
+</html>
